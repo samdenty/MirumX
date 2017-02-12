@@ -1,0 +1,44 @@
+ 
+Interface name : WiFi Connection 
+There are 8 networks currently visible. 
+
+SSID 1 : TP-LINK_743A8C
+    Network type            : Infrastructure
+    Authentication          : Open
+    Encryption              : None 
+
+SSID 2 : SD-WiFi
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+
+SSID 3 : Wifi Hotspot
+    Network type            : Infrastructure
+    Authentication          : Open
+    Encryption              : None 
+
+SSID 4 : #a llfrssjjffhh
+    Network type            : Infrastructure
+    Authentication          : Open
+    Encryption              : None 
+
+SSID 5 : #a llfrssjjffhhj
+    Network type            : Infrastructure
+    Authentication          : Open
+    Encryption              : None 
+
+SSID 6 : #a llfrkjh
+    Network type            : Infrastructure
+    Authentication          : Open
+    Encryption              : None 
+
+SSID 7 : #ajh
+    Network type            : Infrastructure
+    Authentication          : Open
+    Encryption              : None 
+
+SSID 8 : #ajhv
+    Network type            : Infrastructure
+    Authentication          : Open
+    Encryption              : None 
+

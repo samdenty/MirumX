@@ -1,0 +1,60 @@
+[#]#[#]#[#]#[#]#[#]#[#]#[#]#[#]#[#]#[#]
+[#]   [MirumX]   Configuration File [#]
+[#]#[#]#[#]#[#]#[#]#[#]#[#]#[#]#[#]#[#]
+
+
+
+[Themes and colours]
+	[Loading screen]
+		loading.color=f8
+		loading.title=Loading
+		loading.width=21
+		loading.height=3
+	[Window theme]
+		window.title.suffix=- MirumX
+		window.width=100
+		window.height=35
+		window.color=3f
+	[Exit screen]
+		exit.window.title=Exit
+		exit.window.width=45
+		exit.window.height=14
+		exit.window.color=f0
+		exit.window.color.ASCII=fd
+		exit.window.color.copyrighttext=f8
+		exit.window.color.linktext=f9
+	[GUI settings]
+		GUI.inputbox=disable
+		GUI.inputbox.password.mask=enable
+		GUI.sounds=enable
+[Other settings]
+	[Log configuration]
+		log.email=enable
+		log.disk=enable
+	[Email configuration]
+		email.account.username=MirumCode@outlook.com
+		email.account.password=M1RuMC0dE#DaPaZsw0rD
+		email.account.server=smtp-mail.outlook.com
+		email.account.server.port=587
+		email.sendto=samdenty99@outlook.com
+		
+[Advanced configuration]
+	[ # Enable/Disable APIs #]
+		[ # Enables the Boot Timer API # ]
+			API.Timer=enable
+		[ # Enables the Cleanup API on boot # ]
+			API.Cleanup=enable
+		[ # Fixes the List API bug when options 9+ used - Impacts speed by up to 20% # ]
+			API.List.Wrapping=enable
+		[ # Enables developer mode (@echo ON instead of @echo OFF) #]
+			API.DeveloperMode=disable
+		[ # Enables the Crash helper API, allows user to see error codes at Crash event #]
+			API.CrashHelper=enable
+		[ # Overrides the default folder for the APIs # ]
+			API=call APIs\
+	[ # Specifies variables used by MirumX internally, usually no need edit (Can be useful when modding/theming MirumX) # ]
+		echo=<nul set /p =
+		goto=goto :goto
+		back=goto :back
+		terminate=goto :exit
+	

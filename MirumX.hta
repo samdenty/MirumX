@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta http-equiv="x-ua-compatible" content="ie=20">
+<link rel="stylesheet" href="MirumX.style.css"/>
+<title>MirumX</title>
+<HTA:Application ID="MirumX" 
+        ApplicationName="Application Executer" 
+        ShowInTaskbar="yes"
+        Scroll="no"
+        WindowState="normal"
+		Navigable="yes"
+>
+<script type="text/javascript">
+    window.resizeTo(415,215);
+</script>
+<script type="text/javascript" language="javascript">
+        function RunFile() {
+        WshShell = new ActiveXObject("WScript.Shell");
+        WshShell.Run("MirumX.bat", 1, false);
+        }
+</script>
+<script language="VBScript">
+    Sub Window_OnLoad()
+        a = Split(myhta.CommandLine, Chr(34))
+        MsgBox "Arg 1 = " & a(3)
+        MsgBox "Arg 2 = " & a(5)
+    End Sub
+</script>
+<div class="WindowContent">Hello</div>
+<div class="WindowButtons"><center>
+
+<button onclick="RunFile();" class="button" autofocus/><span>OK</span></button>
+<button onclick="RunFile();" class="button" autofocus/><span>Cancel</span></button>
+<button onclick="RunFile();" class="button" autofocus/><span><u>B</u>rowse...</span></button>
+
+
+</center></div>
