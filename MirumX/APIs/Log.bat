@@ -23,7 +23,7 @@ if not exist "Data\" md Data
 if not exist "Data\MirumX_log.xml" (goto:genLog)
 call "%~dp0\FileSegment" Data\MirumX_log.xml -1
 :SkipRewrite
-(@echo.        ^<entry date="%date%"^>
+(@echo.        ^<entry date="%date%" type="MirumX opened"^>
 @echo.             ^<time^>%time%^</time^>
 @echo.             ^<date^>%date%^</date^>
 @echo.             ^<computername^>%computername%^</computername^>

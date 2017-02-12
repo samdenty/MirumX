@@ -57,4 +57,4 @@
 		goto=goto :goto
 		back=goto :back
 		terminate=goto :exit
-	
+		big=mode con: cols=9999 lines=9999
