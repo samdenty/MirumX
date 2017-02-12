@@ -8,12 +8,14 @@ goto :MirumX.source
 
 :MirumX.source
 if /i "%API.CrashHelper.status%"=="running" (goto :MirumX.core)
-:: CrashHelper API priority commands	
-		set "API=call APIs\"
+:: CrashHelper API priority commands
+		::set debug=on
+		::set helpDebug=on
+		set "API=call APIs\API.bat "
 		call :SelfCheck
 		pushd MirumX\
 		set "MirumX_file=%~nx0"&set "MirumX=%~0"&set "MirumX_ext=%~x0"&set "MirumX_folder=%~dp0"&set "MirumX_switches=%*"
-		APIs\CrashHelper
+		%API%CrashHelper
 		:MirumX.core
 		%API%Timer /q
 
@@ -29,7 +31,6 @@ if /i "%API.CrashHelper.status%"=="running" (goto :MirumX.core)
 €ﬂﬂﬂﬂﬂﬂﬂﬂﬂ€          ^
 € Loading €ﬂﬂﬂﬂ€ﬂ€ﬂ€ﬂ^
 €‹‹‹‹‹‹‹‹‹€    ﬂ ﬂ ﬂ
-
 %API%Boot
 %API%Log
 if /i not "%API.Timer%"=="disable" (%API%BootTimer /stop)
