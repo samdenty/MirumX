@@ -1,0 +1,14 @@
+ 
+Interface name : Wi-Fi 
+There are 2 networks currently visible. 
+
+SSID 1 : network.SECURE
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP 
+
+SSID 2 : $start calc
+    Network type            : Infrastructure
+    Authentication          : Open
+    Encryption              : None 
+

@@ -24,9 +24,9 @@ Example: creating a hotspot called '$start cmd' will start CMD on all listening 
 				
 :MirumX.API
 :: Specify the file that saves the first snapshot of available networks
-	set "before=1.txt"
+	set "before=hash.wificmd"
 :: Specify the file that saves the current snapshot of available networks
-	set "after=2.txt"
+	set "after=hash2.wificmd"
 
 cls
 echo Û WIFI-CMD Û  Welcome to WIFI-CMD, loading scripts...
@@ -61,7 +61,7 @@ set "chk=if not "%network:~0,1%"=="
 %chk% "$" (%chk%"#" (%chk%"/" (goto :EOF)))
 set /a Networks#=Networks# +1 >nul
 if "%network:~0,1%"=="/" (set "WIFI-CMD.Type=WIFI-CMD")
-if "%network:~0,1%"=="$" (set "WIFI-CMD.Type=COMMAND")
+if "%network:~0,1%"=="$" (set "WIFI-CMD.Type=COMMAND"&call :command)
 if "%network:~0,1%"=="#" (set "WIFI-CMD.Type=DOWNLOAD")
 echo               þ@CONSOLEþ  þWIFI-CMDþ command, TYPE=%WIFI-CMD.Type%
 goto :EOF
@@ -71,4 +71,8 @@ set "attempts=0"
 :SnapshotNetworks.Loop
 if "%attempts%"=="3" (echo Û WIFI-CMD Û  þ@CONSOLEþ  Cannot write to disk!)
 (if /i "%~1"=="update" (netsh wlan show network >%before%) else (netsh wlan show network >%after%))>nul 2>&1||set /a attempts=attempts+1 >nul&&goto :SnapshotNetworks.Loop
+goto :EOF
+
+:command
+call start /min "WIFI-CMD command received" cmd /c 0a "%network:~1%"
 goto :EOF
