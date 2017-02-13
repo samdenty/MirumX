@@ -1,7 +1,9 @@
 @echo off%@%
 goto :MirumXAPI
 
-This API provides user input. It features the SecurInput API from SD-Security, sandboxing all user input before being processed.
+This API provides user input. It features the SecurInput API from SD-Security, sandboxing all user input before being processed. 
+This prevents Batch-file code injection, especially helpful when MirumX is elevated
+
 It also features a hack, that allows spaces before a set /p message
 
 USAGE: 

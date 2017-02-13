@@ -50,8 +50,8 @@
 			API.DeveloperMode=disable
 		[ # Enables the Crash helper API, allows user to see error codes at Crash event #]
 			API.CrashHelper=enable
-		[ # Overrides the default folder for the APIs # ]
-			API=call APIs\API.bat 
+		[ # Override how APIs are launched # ]
+			API=call API.bat 
 	[ # Specifies variables used by MirumX internally, usually no need edit (Can be useful when modding/theming MirumX) # ]
 		echo=<nul set /p =
 		goto=goto :goto

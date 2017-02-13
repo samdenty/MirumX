@@ -4,12 +4,13 @@ goto :MirumXAPI
 This API provides the header bar for MirumX, it can be customized.
 USAGE: 
 
-Header "Example Page"
+Header "Example Page" "Window title"
          ^ Indicates the title of the page, that appears in the console and on the window title bar
+         				^ Optional: sSet a different name for the Window title
 
 :MirumXAPI
 cls
-title %~1 %window.title.suffix%
+if "%~2"=="" (title %~1 %window.title.suffix%) else (title %~2 %window.title.suffix%)
 mode con: cols=%window.width% lines=%window.height%
 color %window.color%
 :: Hack to get 100%+1 length, *wraps* the text to 100%+1 long

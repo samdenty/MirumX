@@ -36,10 +36,16 @@ echo €‹‹‹€‹
 echo ﬂ
 :SkipStyling
 %API%Input lst "˛ " "Enter your choice:"
+if "%lst%"=="0" goto :FuncBack
 if not defined lst call :NoInput&goto :EOFLIST
 if not defined @List#%lst%? call :Invalid&goto :SkipStyling
 for /f "tokens=2 delims=?" %%a in ('set @List#%lst%?') do (set "ListCommand=%%a")
 endlocal&set "ListCommand=%ListCommand:~1%"
+goto :EOF
+
+:FuncBack
+set "ListCommand=goto :EOF"
+endlocal&set "ListCommand=%ListCommand%"
 goto :EOF
 
 :Invalid

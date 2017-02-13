@@ -13,10 +13,11 @@ if /i "%API.CrashHelper.status%"=="running" (goto :MirumX.core)
 		::set helpDebug=on
 		:: Initiate the boot timer
 			MirumX\APIs\Timer /q
-		set "API=call APIs\API.bat "
+		set "path=%path%;%~dp0MirumX\APIs"
+		set "API=call API.bat "
 		call :SelfCheck
-		pushd MirumX\
-		set "MirumX_file=%~nx0"&set "MirumX=%~0"&set "MirumX_ext=%~x0"&set "MirumX_folder=%~dp0"&set "MirumX_switches=%*"
+		pushd "%~dp0MirumX\"
+		set "MirumX_file=%~nx0"&set "MirumX=%~0"&set "MirumX_ext=%~x0"&set "MirumX_folder=%~dp0"&set "MirumX_dir=%~dp0MirumX\"&set "MirumX_switches=%*"
 		%API%CrashHelper
 		:MirumX.core
 
@@ -40,9 +41,8 @@ goto :Home
 
 
 :Home
-%API%Header "Home"
-echo %BootTime% %BootTime.format%
-%API%List "Sign in" "%API%AdvAuth login" exit "%terminate%"
+%API%Header "Home [%BootTime% %BootTime.format%]" Home
+%API%List "Sign in" "%API%AdvAuth login" Apps "%API%AppEngine" Exit "%terminate%"
 %ListCommand%
 goto :home
 

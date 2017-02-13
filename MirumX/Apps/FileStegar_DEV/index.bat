@@ -2,6 +2,7 @@
 goto :MirumX.API
 This APP hides files in pictures
 :MirumX.API
+%API%Header "File Stegar"
 if exist "FileStegar_files" rd /s /q FileStegar_files
 md FileStegar_files
 set /p "image=Enter image location: "
