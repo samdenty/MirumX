@@ -37,7 +37,16 @@ goto :exit.check
 
 :exit.check
 if "%errorlevel%"=="200" (goto exit.normal)
+if "%errorlevel%"=="300" (goto reboot.new)
+if "%errorlevel%"=="301" (goto reboot.keep)
 goto exit.crash
+
+:reboot.keep
+goto :MirumX
+
+:reboot.new
+goto :MirumX
+
 
 :exit.normal
 for /F "eol=[ delims=" %%A in (main.settings) do set "%%A">nul 2>&1
@@ -66,7 +75,7 @@ set "ASCII=&%API%clr {%exit.window.color.ASCII%}&<nul set /p ="
 Û %ASCII%ÈÍÍÍÍÍÍ¼  ÈÍÍÍ¼ÈÍÍÍ¼  ÈÍÍÍÍÍ¼     ÈÍÍ¼   %normal% Û^
 ÛßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßÛ^
 Û    %copyright%MirumX was designed by Samuel Denty,%normal%   Û^
-Û              %copyright%¸2016 MirumCode.%normal%             Û^
+Û              %copyright%¸2017 MirumCode.%normal%             Û^
 Û                                           Û^
 ßßßÛßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßÛßßß^
    Û   %link%http://Mirum.weebly.com/#MirumX&%API%clr {f0}%normal%   Û   ^
@@ -75,8 +84,18 @@ timeout /nobreak /t 5 >nul
 goto :exit
 
 :exit.crash
-echo MirumX crashed!
+color 0c
+echo.
+%API%FillScreen ß
+echo   Û CRITICAL ERROR: CORE CRASH
+%API%FillScreen Ü
+echo.&echo.
+echo MirumX has just crashed due to an unknown reason.
+echo.
+%API%List "Report to developers" "start mailto:samddenty+mirumx@gmail.com" "Reboot (New session)" "goto :MirumX" Exit "goto :exit.normal"
+%ListCommand%
 pause
+
 
 
 

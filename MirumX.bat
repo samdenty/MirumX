@@ -39,30 +39,25 @@ if /i not "%API.Timer%"=="disable" (%API%BootTimer /stop)
 if /i not "%API.Cleanup%"=="disable" (%API%Cleanup)
 goto :Home
 
+:: Screens
+	:Home
+	%API%Header "Home [%BootTime% %BootTime.format%]" Home
+	%API%List "Sign in" "%API%AdvAuth login" Apps "%API%AppEngine" Crash "|" Exit "%terminate%"
+	%API%Back "goto :Home"
+	%ListCommand%
+	goto :home
 
-:Home
-%API%Header "Home [%BootTime% %BootTime.format%]" Home
-%API%List "Sign in" "%API%AdvAuth login" Apps "%API%AppEngine" Exit "%terminate%"
-%ListCommand%
-goto :home
+:: Priority scripts to be run independently from MirumX main directory
+	:SelfCheck
+	if not exist "MirumX\" (set "ErrorReason=MirumX folder is missing! (MirumX\)"&goto :SelfCheck.Error)
+	if not exist "MirumX\main.settings" (set "ErrorReason=Main configuration file is missing (MirumX\main.settings)"&goto :SelfCheck.Error)
+	if not exist "MirumX\APIs" (set "ErrorReason=MirumX code library is missing (MirumX\APIs)"&goto :SelfCheck.Error)
+	goto :EOF
 
-:goto
-if "%~2"=="" (if "%back.window%"=="" (set "back.window=:Home")) else (set "back.window=%~2")
-if "%~1"=="" (goto :Home) else (goto %~1)
+	:SelfCheck.Error
+	echo Cannot Initiate MirumX! Reason: %ErrorReason%. Put code here to continue anyway
+	pause 
+	goto :eof
 
-:back
-if "%back.window%"=="" (goto :Home) else (goto %back.window%)
-
-:SelfCheck
-if not exist "MirumX\" (set "ErrorReason=MirumX folder is missing! (MirumX\)"&goto :SelfCheck.Error)
-if not exist "MirumX\main.settings" (set "ErrorReason=Main configuration file is missing (MirumX\main.settings)"&goto :SelfCheck.Error)
-if not exist "MirumX\APIs" (set "ErrorReason=MirumX code library is missing (MirumX\APIs)"&goto :SelfCheck.Error)
-goto :EOF
-
-:SelfCheck.Error
-echo Cannot Initiate MirumX! Reason: %ErrorReason%. Put code here to continue anyway
-pause 
-goto :eof
-
-:exit
-exit 200
+	:exit
+	exit 200
