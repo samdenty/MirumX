@@ -23,12 +23,14 @@ There are all sort of APIs available, from **Lists** to **Crash helpers** to **A
 - Header
 - HiddenProcess
 - Sha3<br> **...**
+
+
 ## How to use APIs ##
 APIs are accessible by using the `%API%APIName` format. Some examples:
 
 > Basic script to print a header
 > 
-> 	%API%Header "This is a test page" "Test page"
+	%API%Header "This is a test page" "Test page"
 > Output:<br><br>
 > <img src="https://s10.postimg.org/pdexmv4o9/image.png" width=450px>
 > 
@@ -36,18 +38,18 @@ APIs are accessible by using the `%API%APIName` format. Some examples:
 
 > Script to print a header and then display a list:
 > 
-> 	%API%Header Example
-> 	%API%List "Option 1" command "Option 2" command "Option 3" command
+	%API%Header Example
+	%API%List "Option 1" command "Option 2" command "Option 3" command
 > Output:<br><br>
 > <img src="https://s31.postimg.org/nkgyfnh57/image.png" width=450px>
 ## ##
 
 > Script to print a header and then display a switch list:
 > 
-> 	%API%Header "Example 2"
-> 	%API%Switch /list "Switch one" sw1 "Switch two" sw2 "Switch three" sw3
-> 	%API%Switch /check sw1 "echo checked" "echo Not checked"
-> 	%API%Switch /check sw2 "echo checked" "echo Not checked"
-> 	%API%Switch /check sw3 "echo checked" "echo Not checked"
+ 	%API%Header "Example 2"
+ 	%API%Switch /list "Switch one" sw1 "Switch two" sw2 "Switch three" sw3
+ 	%API%Switch /check sw1 "echo checked" "echo Not checked"
+ 	%API%Switch /check sw2 "echo checked" "echo Not checked"
+ 	%API%Switch /check sw3 "echo checked" "echo Not checked"
 > Output:<br><br>
 > <img src="https://s31.postimg.org/kp3ep9r0r/image.png" width=450px>
