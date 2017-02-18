@@ -1,4 +1,5 @@
 MirumX/MirumX/Data/*
+!MirumX/MirumX/Data/.gitkeep
 
 # Windows image file caches
 Thumbs.db
