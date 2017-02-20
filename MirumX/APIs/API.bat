@@ -2,6 +2,7 @@
 goto :MirumXAPI
 
 This API allows easier debugging of MirumX
+
 :MirumXAPI
 set "echo=<nul set /p ="
 :: Below runs before the API has executed

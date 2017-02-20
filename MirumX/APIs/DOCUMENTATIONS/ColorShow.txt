@@ -1,0 +1,30 @@
+Show characters in color from Ascii codes, string literals and Batch variables,
+and/or set the color of text used in posterior screen output.
+
+   ColorShow  /bf  { code[*times] | "literal" | variable[:[ñ]wide[:fill]] } ...
+
+<bf> specify a BackFore-ground color attribute (see COLOR /? for more info).
+<code>, <times>, <wide> and <fill> must be decimal numbers up to 255 each.
+
+<times> repeat the previous Ascii <code> character that number of times;
+a "X" letter may be used instead of the asterisk.
+
+Use two quote characters together to insert a quote inside a "literal string".
+
+<wide> define a field to show the variable value: justified at left by default,
+or justified at rigth if <wide> have minus sign, or centered if <wide> have
+plus sign; the field is filled with spaces, or with the <fill> code character.
+
+A color attribute may be inserted before any show parameter, that set the color
+for following parameters; the default color is the one at the initial cursor
+position. Use / alone to indicate the default color, use // to indicate the
+default color attribute in reverse video.
+
+Control characters embedded in strings are not properly shown; individual Ascii
+codes for 9, 10 and 13 values (TAB, LineFeed and Return) are correctly shown.
+
+If a color attribute is the last (or only) parameter, then set the color that
+will be used to show text in all posterior output to the screen.
+
+At end, the default attribute of initial cursor position is returned in
+ERRORLEVEL as a *decimal value* = (Background << 16) + Foreground

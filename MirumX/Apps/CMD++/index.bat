@@ -13,6 +13,7 @@ echo.
 :cmdCommand2
 if "%cd:~-1%"=="\" (set "Directory=%cd%") else (set "Directory=%cd%\")
 set "cmdCommand="
+(%API%CursorSize 100) 2>nul
 %echo% %directory%&call :color 0d "$Terminal"&set /p "cmdCommand=>"
 if not defined CmdCommand (goto :CmdCommand2)
 set "CMDCmd=%cmdCommand:"=%"

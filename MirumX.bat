@@ -27,6 +27,7 @@ if /i "%API.CrashHelper.status%"=="running" (goto :MirumX.core)
 
 :: Loading Screen
 	mode con: cols=%loading.width% lines=%loading.height%
+	if /i "%window.pos%"=="enable" (%API%Window Gpos %window.pos.x% %window.pos.y%)
 	color %loading.color%
 	title %loading.title% %window.title.suffix%
 %echo%^

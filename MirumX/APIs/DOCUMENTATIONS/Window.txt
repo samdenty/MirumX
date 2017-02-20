@@ -1,0 +1,16 @@
+Get or set some values related to console screen window.
+
+Window
+Show the window title.
+
+Window Size [width height]
+Set window size in characters.
+At end, previous window size is returned as width+(height<<16) in ERRORLEVEL.
+
+Window GSize [MIN|MAX|REST|HIDE|SHOW]
+Set window graphic size or show state.
+At end, previous window client-area size in pixels is returned as width+(height<<16) in ERRORLEVEL. 
+
+Window GPos [x y]
+Set window position in pixels.
+At end, return previous window position in pixels as x+(y<<16) in ERRORLEVEL.

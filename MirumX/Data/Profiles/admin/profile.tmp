@@ -1,0 +1,9 @@
+[AdvAUTH V1.2]
+This file contains an account record for %WHAYYEI%. DO NOT DELETE
+
+	[Account information]
+		user.name.first=Sam	
+		user.name.last=Denty
+		user.email=samdenty99@outlook.com
+	[Account permissions]
+		user.status=normal

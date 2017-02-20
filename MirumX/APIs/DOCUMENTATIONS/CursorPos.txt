@@ -1,0 +1,9 @@
+Get or set cursor position.
+
+CursorPos [[±]col [±]row]
+
+If no parameter is given, return current cursor position as col+(row<<16) in ERRORLEVEL.
+
+If any coordinate have sign, the position given is relative to the current one.
+
+If cursor is moved, the Ascii code of the character at new position is returned in ERRORLEVEL.

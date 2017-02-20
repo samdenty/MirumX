@@ -1,0 +1,8 @@
+Get or set cursor size.
+
+CursorSize [size|/L]
+
+The cursor size is a percentage (1..100) of the character cell that is filled by the cursor.
+Use 0 to hide the cursor; use /L to recover the last hidden cursor.
+
+At end, the previous cursor size is returned in ERRORLEVEL.

@@ -1,0 +1,5 @@
+Get the length of string literals and Batch variables.
+
+StrLen "literal" | variable ...
+
+At end, the accumulated length of all strings is returned in ERRORLEVEL.

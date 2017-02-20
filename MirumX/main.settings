@@ -15,6 +15,10 @@
 		window.width=100
 		window.height=30
 		window.color=3f
+		[ Window positioner API]
+			window.pos=enable
+			window.pos.x=50
+			window.pos.y=70
 	[Exit screen]
 		exit.window.title=Exit
 		exit.window.width=45
@@ -23,7 +27,8 @@
 		exit.window.color.ASCII=fd
 		exit.window.color.copyrighttext=f8
 		exit.window.color.linktext=f9
-	[GUI settings]
+	[ Input & Misc ]
+		input.password.mask=enable
 		GUI.inputbox=disable
 		GUI.inputbox.password.mask=enable
 		GUI.sounds=enable

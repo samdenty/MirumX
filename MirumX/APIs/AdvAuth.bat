@@ -1,13 +1,22 @@
 @echo off%@%
+goto :MirumXAPI
+
+This API provides an encrypted user system for MirumX
+
+:MirumXAPI
 setlocal
 %API%DeleteChar
 if /i "%~1"=="login" goto login
-
-pause
+if /i "%~1"=="signup" goto signup
+goto login
 
 
 :login
-%API%Header "˛AdvAuth˛  Login"
+%API%Header "AdvAuth V2.1.5.0A Login" "AdvAuth Login"
+echo €ﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ€
+echo €              Please enter your credentials to sign in               €
+echo €         Or enter a username ^& password to create an account         €
+echo €‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹€
 echo.
 call :Auth_u
 echo.
@@ -15,6 +24,13 @@ call :Auth_p
 if not exist "Data\Profiles\%Auth_u%\" (set "error=1"&goto :login.fail) else (if not exist "Data\Profiles\%Auth_u%\profile.en" (set "error=2"&goto :login.fail))
 (%API%Crypt -d -p "%Auth_p%" -o "Data\Profiles\%Auth_u%\profile.tmp" "Data\Profiles\%Auth_u%\profile.en")>nul 2>&1&&goto :login.success||set "error=3"&&goto :login.fail
 goto :login.fail
+
+:signup
+echo  Welcome to AdvAuth V2.1.5.0A
+echo.
+call :Auth_u
+echo.
+call :Auth_p
 
 
 :login.success
@@ -50,7 +66,7 @@ echo  €‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹€
 goto :EOF
 
 :login.fail
-echo.&echo.&echo.
+echo.&echo.
 if "%error%"=="1" goto :login.fail.1
 if "%error%"=="2" goto :login.fail.2
 if "%error%"=="3" goto :login.fail.3
