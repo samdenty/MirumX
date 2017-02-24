@@ -94,8 +94,7 @@ echo MirumX has just crashed due to an unknown reason.
 echo.
 %API%List "Report to developers" "start mailto:samddenty+mirumx@gmail.com" "Reboot (New session)" "goto :MirumX" Exit "goto :exit.normal"
 %ListCommand%
-pause
-
+goto :exit.normal
 
 
 

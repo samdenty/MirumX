@@ -42,7 +42,8 @@ goto :Home
 
 :: Screens
 	:Home
-	%API%Header "Home [%BootTime% %BootTime.format%]" Home
+	if "%fromboot%"=="yes" (%API%Header "Home [%BootTime% %BootTime.format%]" Home) else (%API%Header "Home" Home)
+	set "fromboot=no"
 	%API%List "Sign in" "%API%AdvAuth login" Apps "%API%AppEngine" Crash "|" Exit "%terminate%"
 	%API%Back "goto :Home"
 	%ListCommand%

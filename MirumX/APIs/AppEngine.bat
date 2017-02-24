@@ -21,7 +21,7 @@ goto :MirumXAPI
 	set listAPI.apps=
 	set AppEngine.apps=
 	%API%Header "Load App"
-	for /f %%a in ('dir /O:-D /B /A:D %MirumX_dir%Apps^|findstr /V /I ".disabled"') do (if exist "%MirumX_dir%Apps\%%a\index.bat" (set "AppEngine.apps=installed"&call :record "%%a"))
+	for /f %%a in ('dir /O:N /B /A:D %MirumX_dir%Apps^|findstr /V /I ".disabled"') do (if exist "%MirumX_dir%Apps\%%a\index.bat" (set "AppEngine.apps=installed"&call :record "%%a"))
 	if "%AppEngine.apps%"=="installed" (%API%List %listAPI.apps%) else (goto :Load.noneInstalled)
 	%ListCommand%
 goto :EOF

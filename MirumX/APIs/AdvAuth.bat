@@ -12,7 +12,7 @@ goto login
 
 
 :login
-%API%Header "AdvAuth V2.1.5.0A Login" "AdvAuth Login"
+%API%Header "AdvAuth V2.1.5.0A sign in" "AdvAuth sign in"
 echo ÛßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßÛ
 echo Û              Please enter your credentials to sign in               Û
 echo Û         Or enter a username ^& password to create an account         Û
@@ -37,15 +37,15 @@ call :Auth_p
 if not exist "Data\Profiles\%Auth_u%\profile.tmp" goto :login.fail
 endlocal&set "Auth_u=%Auth_u%"
 
-%API%Header "þAdvAuthþ  Login successful"
+%API%Header "Signed in as [%Auth_u%]" "Signed in"
 echo.
 echo                     ÛßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßÛ
-echo                     Û                    Login successful                    Û
-echo                     Û ------------------------------------------------------ Û
-echo                     Û  You have been successfully logged in, please wait...  Û
+echo                     Û             You are now signed in to MirumX            Û
+echo                     Û                     Please wait...                     Û
 echo                     ÛÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÛ
 for /F "eol=[ skip=3 delims=" %%A in (Data\Profiles\%Auth_u%\profile.tmp) do (set "%%A">nul 2>&1)
 endlocal&set "Auth_u=%Auth_u%"
+timeout /nobreak 1 >nul
 goto :EOF
 
 
