@@ -14,7 +14,7 @@ Input var1 " Please specify value for var1: " "Please enter data for var1" -p
 			                                   ^ Indicates the GUI message before input (If not specified, the command line version will be used
 																			^ -p specifies that the input should be masked
 :MirumXAPI
-	%API%DeleteChar
+	if not defined DeleteChar (%API%DeleteChar)
 	set "input.mask="
 	set "StringName=%~1"
 	set "StringText=%~2"

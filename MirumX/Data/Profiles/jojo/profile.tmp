@@ -1,0 +1,8 @@
+[AdvAUTH V2.1.5.0A]
+This file contains an account record for jojo. DO NOT DELETE
+ECHO is off.
+	[Account information]
+		user.name=Sam Denty
+		user.email=samdenty99@outlook.com
+	[Account permissions]
+		user.status=normal

@@ -8,8 +8,6 @@ Header "Example Page" "Window title"
          ^ Indicates the title of the page, that appears in the console and on the window title bar
          				^ Optional: Set a different name for the Window title
 
-32
-
 
 :MirumXAPI
 cls

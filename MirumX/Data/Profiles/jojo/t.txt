@@ -1,0 +1,2 @@
+CONTAINER ID        IMAGE               COMMAND                    CREATED             STATUS                      PORTS               NAMES
+94c9dc4ba7c6        clearcmd6           "c:\\windows\\system..."   24 minutes ago      Exited (0) 23 minutes ago                       mycont
