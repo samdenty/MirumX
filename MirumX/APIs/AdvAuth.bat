@@ -31,6 +31,9 @@ echo                     Ûßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
 echo                     Û             You are now signed out of MirumX           Û
 echo                     Û                     Please wait...                     Û
 echo                     ÛÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÛ
+set "subst="
+for /f "tokens=*" %%a in ('subst^|findstr ff393560') do (set "subst=%%a")
+if defined subst (subst /d %subst:~0,2%)
 goto :EOF
 
 :signin
@@ -62,7 +65,7 @@ goto :Signup
 
 :signin.success
 if not exist "Data\Profiles\%Auth_u%\profile.tmp" goto :signin.fail
-for /F "eol=[ skip=3 delims=" %%A in (Data\Profiles\%Auth_u%\profile.tmp) do (set "%%A">nul 2>&1)
+%API%Read Data\Profiles\%Auth_u%\profile.tmp
 (del Data\Profiles\%Auth_u%\profile.tmp) >nul 2>&1
 %API%Vault /decrypt2 "%Auth_u%" "%Auth_p%"
 :signin.message.success

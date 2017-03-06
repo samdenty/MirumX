@@ -4,6 +4,7 @@ goto :MirumXAPI
 This API allows easier debugging of MirumX
 
 :MirumXAPI
+if "%~1"=="" goto :EOF
 set "echo=<nul set /p ="
 :: Below runs before the API has executed
 
@@ -17,7 +18,7 @@ if "%debug%"=="on" (
 	)
 )
 
-call %~dp0%*
+call "%~dp0"%*
 
 :: Below runs after the API has been successfully executed
 if "%debug%"=="on" (

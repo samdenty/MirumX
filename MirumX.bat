@@ -1,4 +1,4 @@
-@echo off
+@echo off%@%
 goto :MirumX.source
 
 ---------------------------------------------
@@ -11,13 +11,14 @@ if /i "%API.CrashHelper.status%"=="running" (goto :MirumX.core)
 :: CrashHelper API priority commands
 		::set debug=on
 		::set helpDebug=on
+		::set "@=&prompt лл &echo on"
 		:: Initiate the boot timer
 			MirumX\APIs\Timer /q
 		set "path=%path%;%~dp0MirumX\APIs"
 		set "API=call API.bat "
 		call :SelfCheck
 		pushd "%~dp0MirumX\"
-		set "MirumX_file=%~nx0"&set "MirumX=%~0"&set "MirumX_ext=%~x0"&set "MirumX_folder=%~dp0"&set "MirumX_dir=%~dp0MirumX\"&set "MirumX_switches=%*"
+		set "MirumX_file=%~nx0"&set "MirumX=%~f0"&set "MirumX_ext=%~x0"&set "MirumX_folder=%~dp0"&set "MirumX_dir=%~dp0MirumX\"&set "MirumX_switches=%*"
 		%API%CrashHelper
 		:MirumX.core
 
@@ -42,6 +43,7 @@ goto :Home
 
 :: Screens
 	:Home
+	%API%HiddenProcess "%API%Header "hi""
 	if "%fromboot%"=="yes" (%API%Header "Home [%BootTime% %BootTime.format%]" Home) else (%API%Header "Home" Home)
 	set "fromboot=no"
 	dir /b /ad "Data\Profiles\*"|>nul findstr "^" && (if defined Auth_U (set AdvAuthMsg=out) else (set AdvAuthMsg=in)) || (set AdvAuthMsg=up)

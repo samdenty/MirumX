@@ -1,4 +1,4 @@
-@echo off
+@echo off%@%
 goto :MirumXAPI
 
 Displays a message if MirumX APIs are loaded (For Development only)

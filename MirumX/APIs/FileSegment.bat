@@ -1,4 +1,4 @@
-@echo off
+@echo off%@%
 goto :MirumXAPI
 
 NOTE: MirumX debugging.mode disabled on this API

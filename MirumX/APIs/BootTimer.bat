@@ -1,4 +1,4 @@
-@echo off
+@echo off%@%
 goto :MirumX.API
 
 This API provides the amount of time that it took for MirumX to boot (Requires timer.exe)

@@ -30,6 +30,13 @@ if defined MirumX_switches (goto :MirumX_switches) else (goto :MirumX)
 call cmd /t:f0 /c "%MirumX%"
 goto :exit.check
 
+:MirumX.reboot
+echo %cd%
+pause
+set "API.CrashHelper.status=reboot"
+call cmd /t:f0 /c "%MirumX%"
+goto :exit.check
+
 :MirumX_switches
 call cmd /t:f0 /c "%MirumX%" %MirumX_switches%
 goto :exit.check
@@ -84,6 +91,8 @@ timeout /nobreak /t 5 >nul
 goto :exit
 
 :exit.crash
+@echo off
+set @=
 color 0c
 echo.
 %API%FillScreen ß
@@ -92,7 +101,7 @@ echo   Û CRITICAL ERROR: CORE CRASH
 echo.&echo.
 echo MirumX has just crashed due to an unknown reason.
 echo.
-%API%List "Report to developers" "start mailto:samddenty+mirumx@gmail.com" "Reboot (New session)" "goto :MirumX" Exit "goto :exit.normal"
+%API%List "Report to developers" "start mailto:samddenty+mirumx@gmail.com" "Reboot (New session)" "goto :MirumX.reboot" Exit "goto :exit.normal"
 %ListCommand%
 goto :exit.normal
 
