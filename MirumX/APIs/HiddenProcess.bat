@@ -3,17 +3,11 @@ goto :MirumXAPI
 
 This API launches executables in a new process, hidden
 
+USAGE:
+		HiddenProcess command
+						^ Command you want executed, can contain %API% commands
+
 :MirumXAPI
 if "%~1"=="" goto :EOF
-if "%~1"=="lAuNcHmE129" goto :LaunchMe
-setlocal
-set Identifier=%random%[%random%]
-start /min "" cmd /q /c "call "%~f0" lAuNcHmE129 "%~1""
-:: %API%HideWindow %Identifier%
-endlocal
+start /min "" cmd /q /c "%~1"
 goto :EOF
-
-
-:LaunchMe
-%~2
-pause

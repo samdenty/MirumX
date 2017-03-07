@@ -15,10 +15,18 @@ pushd "%MirumX_dir%Data\Profiles\%~2"
 if /i "%~1"=="/decrypt" goto :decrypt
 if /i "%~1"=="/decrypt2" goto :decrypt2
 if /i "%~1"=="/encrypt" goto :encrypt
+if /i "%~1"=="/disallow" goto :disallow.access
 goto :EOF
 
 :encrypt
 (%API%zip a vault.en .\Vault.{ff393560-c2a7-11cf-bff4-444553540000}\* -p"%~3")>nul
+popd
+goto :EOF
+
+:disallow.access
+for /f "tokens=*" %%a in ('subst^|findstr ff393560') do (set "subst=%%a")
+if defined subst (subst /d %subst:~0,2%)
+popd
 goto :EOF
 
 
@@ -28,6 +36,8 @@ md Vault.{ff393560-c2a7-11cf-bff4-444553540000}
 pushd Vault.{ff393560-c2a7-11cf-bff4-444553540000}
 (%API%zip e ..\vault.en -p"%~2")>nul
 popd
+attrib +h +s Vault.{ff393560-c2a7-11cf-bff4-444553540000}
+popd
 goto :EOF
 
 :decrypt2
@@ -36,5 +46,8 @@ md Vault.{ff393560-c2a7-11cf-bff4-444553540000}
 pushd Vault.{ff393560-c2a7-11cf-bff4-444553540000}
 (%API%zip e ..\vault.en -p"%~2")>nul
 popd
+attrib +h +s Vault.{ff393560-c2a7-11cf-bff4-444553540000}
 subst M: Vault.{ff393560-c2a7-11cf-bff4-444553540000}
+%API%HiddenProcess "call start explorer M:\"
+popd
 goto :EOF

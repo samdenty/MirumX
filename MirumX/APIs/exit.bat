@@ -28,6 +28,6 @@ set "ASCII=&%API%clr {%exit.window.color.ASCII%}&<nul set /p ="
 Û              %copyright%¸2016 MirumCode.%normal%             Û^
 Û                                           Û^
 ßßßÛßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßÛßßß^
-   Û   %link%http://Mirum.weebly.com/#MirumX&%API%clr {f0}%normal%   Û   ^
+   Û    %link%http://Mirum.weebly.com/MirumX&%API%clr {f0}%normal%   Û   ^
    ÛÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÛ
 pause >nul

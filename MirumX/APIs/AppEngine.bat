@@ -21,7 +21,7 @@ goto :MirumXAPI
 	set listAPI.apps=
 	set AppEngine.apps=
 	%API%Header "Load App"
-	for /f %%a in ('dir /O:N /B /A:D %MirumX_dir%Apps^|findstr /V /I ".disabled"') do (if exist "%MirumX_dir%Apps\%%a\index.bat" (set "AppEngine.apps=installed"&call :record "%%a"))
+	for /f "delims=" %%a in ('dir /O:N /B /A:D "%MirumX_dir%Apps"^|findstr /V /I ".disabled"') do (if exist "%MirumX_dir%Apps\%%a\index.bat" (set "AppEngine.apps=installed"&call :record "%%a"))
 	if "%AppEngine.apps%"=="installed" (%API%List %listAPI.apps%) else (goto :Load.noneInstalled)
 	%ListCommand%
 goto :EOF
@@ -50,8 +50,8 @@ echo.
 echo ERROR:
 echo Search directory  = %MirumX_dir%Apps
 echo Current directory = %CD%
-echo The directory /MirumX/Apps/ is empty or your apps are disabled.
-echo     Could not find /MirumX/Apps/*/index.bat
+echo The directory \MirumX\Apps\ is empty or your apps are disabled.
+echo     Could not find \MirumX\Apps\*\index.bat
 pause >nul
 goto :EOF
 

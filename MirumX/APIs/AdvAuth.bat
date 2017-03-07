@@ -32,8 +32,7 @@ echo                     €             You are now signed out of MirumX         
 echo                     €                     Please wait...                     €
 echo                     €‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹€
 set "subst="
-for /f "tokens=*" %%a in ('subst^|findstr ff393560') do (set "subst=%%a")
-if defined subst (subst /d %subst:~0,2%)
+%API%Vault /disallow
 goto :EOF
 
 :signin

@@ -5,38 +5,45 @@ set "cmd++=goto cmdCommand"
 set "echo=<nul set /p ="
 cls
 :cmd
-title terminal.sds
-%echo% MirumX &call :color 0a "Terminal Mode"&%echo% . [&call :color 0f "Version 1.4.1000"&%echo% ]&echo.
-echo MirumCode¸ 2017, All Rights Reserved.
+title MirumX TERMINAL
+for /f %%A in ('"prompt $H &echo on &for %%B in (1) do rem"') do set DeleteChar=%%A
+if not defined DeleteChar (call :noDeleteChar&goto :cmdCommand)
+echo ÛßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßÛ
+%echo% Û &call :color 0f "MirumX" &call :color 0e " Terminal Mode"&call :color 0a " [Version 1.6.1.100]"&%echo% .%DeleteChar% Û&echo.
+echo ÛÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÛ&echo.
+call :color 0f "  MirumCode¸"&call :color 07 " 2017, All Rights Reserved."&echo.
+call :color 08 "       Welcome to MirumX TERMINAL type"&call :color 07 " 'help'"&call :color 08 " for help"&echo.
 :cmdCommand
 echo.
 :cmdCommand2
 if "%cd:~-1%"=="\" (set "Directory=%cd%") else (set "Directory=%cd%\")
 set "cmdCommand="
 (%API%CursorSize 100) 2>nul
-%echo% %directory%&call :color 0d "$Terminal"&set /p "cmdCommand=>"
+%echo% %directory%&call :color 0d "$"&set /p "cmdCommand=>"
 if not defined CmdCommand (goto :CmdCommand2)
 set "CMDCmd=%cmdCommand:"=%"
-if /i "%CMDCmd:~0,5%" == "%%API%%" %API%%CMDCmd:~5%&goto :cmdcommand
-if /i "%CMDCmd%" == "cmd" goto :cmd
-if /i "%CMDCmd%" == "wincmd" cmd&goto :cmdCommand
-if /i "%CMDCmd%" == "clear" cls&goto :cmdCommand
-if /i "%CMDCmd%" == "back" goto :EOF
-if /i "%CMDCmd%" == "help" call :help&goto :cmdCommand
-if /i "%CMDCmd%" == "sds" goto :EOF
-if /i "%CMDCmd%" == "sd-security" goto :EOF
-if /i "%CMDCmd%" == "clscon" goto :clscon
-if /i "%CMDCmd%" == "exit" goto :EOF
+set "case=if /i "%CMDCmd%" =="
+%case% "cmd" 			goto :cmd
+%case% "wincmd" 		cmd&goto :cmdCommand
+%case% "clear" 			cls&goto :cmdCommand
+%case% "back"	 		goto :EOF
+%case% "0" 				goto :EOF
+%case% "help" 			goto :help
+%case% "clscon" 		goto :clscon
+%case% "exit" 			goto :EOF
+if /i "%CMDCmd:~0,5%" == "%%API%%" (goto :API)
 call :color 0b "CMD OUTPUT("&echo.&%cmdCommand%
 goto :cmdCommand
+:API
+%API%%CMDCmd:~5%
+goto :cmdcommand
 :help
-%echo% SD-Security &call :color 0a "Terminal Mode"&%echo% . Built-in help page:&echo.&echo.
-echo SD-Terminal overrides some of the default commands (eg. cmd, help, exit etc.)
-echo to perform a overriden command, prefix it with a space eg. 'exit' = ' exit'
+echo To load a MirumX API, simply use %%API%%. For example:
 echo.
-echo SD-Terminal uses multiple colors, to provide an easy to read format. To disable
-echo the multiple colors API, simply 'set disableColor=yes'.
-goto :EOF
+echo     %%API%%Beep
+echo     %%API%%Header "hello world"
+echo     %%API%%Fillscreen @
+goto :cmdCommand
 :clscon
 color 07
 mode con: cols=%window.width% lines=%window.height%
@@ -44,9 +51,8 @@ cls&goto :cmd
 :Color
 if /i "%disableColor%" == "yes" %echo% %~2&goto :EOF
 if not exist "C:\windows\system32\findstr.exe" %echo% %~2&goto :EOF
-for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & for %%b in (1) do rem"') do (set "DEL=%%a")
 pushd %temp%
-<nul set /p ".=%DEL%" > "%~2"
+<nul set /p ".=%DeleteChar%" > "%~2"
 findstr /v /a:%1 /R "^$" "%~2" nul
 del "%~2" > nul 2>&1
 popd

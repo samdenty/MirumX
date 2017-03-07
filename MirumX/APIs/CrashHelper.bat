@@ -31,8 +31,8 @@ call cmd /t:f0 /c "%MirumX%"
 goto :exit.check
 
 :MirumX.reboot
-echo %cd%
-pause
+popd&popd&popd
+pushd %~dp0\..\..
 set "API.CrashHelper.status=reboot"
 call cmd /t:f0 /c "%MirumX%"
 goto :exit.check
@@ -85,9 +85,9 @@ set "ASCII=&%API%clr {%exit.window.color.ASCII%}&<nul set /p ="
 Û              %copyright%¸2017 MirumCode.%normal%             Û^
 Û                                           Û^
 ßßßÛßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßÛßßß^
-   Û   %link%http://Mirum.weebly.com/#MirumX&%API%clr {f0}%normal%   Û   ^
+   Û    %link%http://mirum.weebly.com/MirumX&%API%clr {f0}%normal%   Û   ^
    ÛÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÛ
-timeout /nobreak /t 5 >nul
+timeout /t 10 >nul
 goto :exit
 
 :exit.crash

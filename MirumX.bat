@@ -8,12 +8,13 @@ goto :MirumX.source
 
 :MirumX.source
 if /i "%API.CrashHelper.status%"=="running" (goto :MirumX.core)
-:: CrashHelper API priority commands
-		::set debug=on
-		::set helpDebug=on
-		::set "@=&prompt ÛÛ &echo on"
-		:: Initiate the boot timer
-			MirumX\APIs\Timer /q
+:::::::::::    MirumX bootloader MUST REMAIN STABLE!!    :::::::::
+		::::::::::::::::::::::::-DEBUGGER-::::::::::::::::::::::::
+			::call MirumX\APIs\Debug minimal
+			::call MirumX\APIs\Debug normal
+			::call MirumX\APIs\Debug complete
+		::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+		MirumX\APIs\Timer /q
 		set "path=%path%;%~dp0MirumX\APIs"
 		set "API=call API.bat "
 		call :SelfCheck
@@ -25,25 +26,23 @@ if /i "%API.CrashHelper.status%"=="running" (goto :MirumX.core)
 :boot.sequence
 :: Import the configuration into memory
 	for /F "eol=[ delims=" %%A in (main.settings) do set "%%A">nul 2>&1
-
 :: Loading Screen
 	mode con: cols=%loading.width% lines=%loading.height%
 	if /i "%window.pos%"=="enable" (%API%Window Gpos %window.pos.x% %window.pos.y%)
 	color %loading.color%
 	title %loading.title% %window.title.suffix%
-%echo%^
-ÛßßßßßßßßßÛ          ^
-Û Loading ÛßßßßÛßÛßÛß^
-ÛÜÜÜÜÜÜÜÜÜÛ    ß ß ß
+	%echo%^
+	ÛßßßßßßßßßÛ          ^
+	Û Loading ÛßßßßÛßÛßÛß^
+	ÛÜÜÜÜÜÜÜÜÜÛ    ß ß ß
 %API%Boot
-%API%Log
+%API%HiddenProcess "%API%Log"
 if /i not "%API.Timer%"=="disable" (%API%BootTimer /stop)
-if /i not "%API.Cleanup%"=="disable" (%API%Cleanup)
+if /i not "%API.Cleanup%"=="disable" (%API%HiddenProcess "%API%Cleanup")
 goto :Home
 
 :: Screens
 	:Home
-	%API%HiddenProcess "%API%Header "hi""
 	if "%fromboot%"=="yes" (%API%Header "Home [%BootTime% %BootTime.format%]" Home) else (%API%Header "Home" Home)
 	set "fromboot=no"
 	dir /b /ad "Data\Profiles\*"|>nul findstr "^" && (if defined Auth_U (set AdvAuthMsg=out) else (set AdvAuthMsg=in)) || (set AdvAuthMsg=up)
