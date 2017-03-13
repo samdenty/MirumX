@@ -53,15 +53,38 @@ goto :Home
 
 :: Priority scripts to be run independently from MirumX main directory
 	:SelfCheck
-	if not exist "MirumX\" (set "ErrorReason=MirumX folder is missing! (MirumX\)"&goto :SelfCheck.Error)
-	if not exist "MirumX\main.settings" (set "ErrorReason=Main configuration file is missing (MirumX\main.settings)"&goto :SelfCheck.Error)
-	if not exist "MirumX\APIs" (set "ErrorReason=MirumX code library is missing (MirumX\APIs)"&goto :SelfCheck.Error)
+	if not exist "MirumX\" goto :downloadMirumX
+	if not exist "MirumX\main.settings" (set "ErrorReason=Main configuration file is missing (MirumX\main.settings)"&set "ErrorReason.minimal=Settings corrupt"&goto :SelfCheck.Error)
+	if not exist "MirumX\APIs" (set "ErrorReason=MirumX code library is missing (MirumX\APIs)"&set "ErrorReason.minimal=MirumX APIs missing"&goto :SelfCheck.Error)
 	goto :EOF
 
-	:SelfCheck.Error
-	echo Cannot Initiate MirumX! Reason: %ErrorReason%. Put code here to continue anyway
-	pause 
-	goto :eof
+:SelfCheck.Error
+cls
+mode con: cols=100 lines=30
+color 0b
+title %ErrorReason.minimal% - MirumX
+echo ^
+€€€€€ﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ€€€€€ﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ^
+˛ ˛ ˛   MirumX   ˛ ˛ ˛          %ErrorReason.minimal% &echo ^
+€€€€€‹‹‹‹‹‹‹‹‹‹‹‹€€€€€‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ &rem Don't remove extra white space at the end
+echo test
+pause
+goto :EOF
+
+
+:downloadMirumX
+cls
+mode con: cols=100 lines=30
+color 0b
+title Welcome to MirumX
+echo ^
+€€€€€ﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ€€€€€ﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ^
+˛ ˛ ˛   MirumX   ˛ ˛ ˛          Welcome to MirumX &echo ^
+€€€€€‹‹‹‹‹‹‹‹‹‹‹‹€€€€€‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ &rem Don't remove extra white space at the end
+echo                            Welcome to MirumX, downloading required files...
+pause
+goto :EOF
+
 
 	:exit
 	exit 200

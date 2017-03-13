@@ -1,0 +1,66 @@
+body {
+margin:0px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+.WindowButtons {
+background-color: #F0F0F0;
+position:absolute;
+bottom:0px;
+padding: 20px;
+padding-bottom: 14px;
+width: calc(100% - 40px);
+}
+.WindowContent {
+font-family:Segoe UI;
+font-size: 13px;
+background-color: #999;
+padding:4px;
+height:100%;
+}
+.button span {
+position:relative;
+top: 0;
+left: 0;
+}
+
+.button {
+transition: all 0.4s ease;
+outline: 1px solid #ADADAD;
+border: 1px solid rgba(0,0,0,0);
+background-color:#E1E1E1;
+padding: 2px;
+color:#000;
+letter-spacing: 0.1px;
+overflow: hidden;
+font-family:Segoe UI;
+min-width:78px;
+padding-left: 11px;
+padding-right: 11px;
+font-size: 12px;
+margin-right:6px;
+margin-bottom:6px;
+}
+
+.button:focus {
+outline: 1px solid #0078D7;
+border: 1px solid #0078D7;
+background-color:#E1E1E1;
+}
+
+
+.button:hover {
+border-color: rgba(0,0,0,0);
+outline: 1px solid #0078D7;
+background-color:#E5F1FB;
+}
+
+.button:active {
+background-color: #CCE4F7;
+outline: 1px solid #005499;
+}
