@@ -53,3 +53,5 @@ APIs are accessible by using the `%API%APIName` format. Some examples:
  	%API%Switch /check sw3 "echo checked" "echo Not checked"
 > Output:<br><br>
 > <img src="https://s31.postimg.org/kp3ep9r0r/image.png" width=450px>
+
+[![Analytics](https://ga-beacon.appspot.com/UA-85426772-5/MirumX/?pixel)](https://github.com/igrigorik/ga-beacon)
